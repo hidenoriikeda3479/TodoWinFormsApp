@@ -8,6 +8,14 @@ namespace TodoWinFormsApp.Data;
 /// </summary>
 public sealed class TodoDbContext : DbContext
 {
+
+    /// <summary>
+    /// 既定の接続設定を使うDBコンテキストを作成する
+    /// </summary>
+    public TodoDbContext()
+    {
+    }
+
     public TodoDbContext(DbContextOptions<TodoDbContext> options)
         : base(options)
     {

@@ -10,19 +10,24 @@ using System.Windows.Forms;
 
 namespace TodoWinFormsApp
 {
-    public partial class MainForm : Form
+    public partial class AssigneeList : Form
     {
-        public MainForm()
+        public AssigneeList()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (var form = new AssigneeList())
+            using (var form = new AssigneeResister())
             {
                 form.ShowDialog();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

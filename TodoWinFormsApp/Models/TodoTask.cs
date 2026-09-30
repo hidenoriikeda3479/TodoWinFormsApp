@@ -18,7 +18,7 @@ public sealed class TodoTask
     public TodoStatus Status { get; set; } = TodoStatus.NotStarted;
 
     /// <summary>優先度</summary>
-    public TodoPriority Priority { get; set; } = TodoPriority.Medium;
+    public TodoPriority? Priority { get; set; } = TodoPriority.Medium;
 
     /// <summary>担当者ID</summary>
     public string? AssigneeId { get; set; }
