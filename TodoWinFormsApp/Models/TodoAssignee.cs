@@ -8,17 +8,11 @@ public sealed class TodoAssignee
     /// <summary>担当者ID</summary>
     public string AssigneeId { get; set; } = Guid.NewGuid().ToString();
 
-    /// <summary>ユーザーコード</summary>
-    public required string UserCode { get; set; }
-
     /// <summary>担当者名</summary>
     public required string AssigneeName { get; set; }
 
     /// <summary>メールアドレス</summary>
     public string? EmailAddress { get; set; }
-
-    /// <summary>利用状態</summary>
-    public bool IsActive { get; set; } = true;
 
     /// <summary>表示順</summary>
     public int DisplayOrder { get; set; } = 1;

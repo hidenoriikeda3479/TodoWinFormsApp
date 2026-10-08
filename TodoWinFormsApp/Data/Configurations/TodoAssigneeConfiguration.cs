@@ -31,11 +31,6 @@ public sealed class TodoAssigneeConfiguration : IEntityTypeConfiguration<TodoAss
             .ValueGeneratedNever()
             .HasComment("担当者ID");
 
-        builder.Property(x => x.UserCode)
-            .HasMaxLength(36)
-            .IsUnicode(false)
-            .IsRequired()
-            .HasComment("ユーザーコード");
 
         builder.Property(x => x.AssigneeName)
             .HasMaxLength(100)
@@ -47,9 +42,6 @@ public sealed class TodoAssigneeConfiguration : IEntityTypeConfiguration<TodoAss
             .IsUnicode(false)
             .HasComment("メールアドレス");
 
-        builder.Property(x => x.IsActive)
-            .HasDefaultValue(true)
-            .HasComment("利用状態");
 
         builder.Property(x => x.DisplayOrder)
             .HasDefaultValue(1)
@@ -85,12 +77,5 @@ public sealed class TodoAssigneeConfiguration : IEntityTypeConfiguration<TodoAss
             .HasDefaultValue(HistoryLogType.Insert)
             .HasComment("履歴処理区分");
 
-        builder.HasIndex(x => x.UserCode)
-            .IsUnique()
-            .HasDatabaseName("IdxTodoAssignee01");
-
-        builder.HasIndex(x => new { x.IsActive, x.DisplayOrder, x.AssigneeName })
-            .IsDescending(true, false, false)
-            .HasDatabaseName("IdxTodoAssignee02");
     }
 }

@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TodoWinFormsApp.Data;
+using TodoWinFormsApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace TodoWinFormsApp
 {
@@ -29,5 +32,27 @@ namespace TodoWinFormsApp
         {
 
         }
+
+        private async Task SearchDepartmentAsync()
+        {
+            try
+            {
+                await using var dbContext = new TodoDbContext();
+
+                var assingees = await dbContext.TodoAssignees
+                    .OrderBy(TodoAssignee => TodoAssignee.AssigneeId)
+                    .Select(TodoAssignee => new AssigneeListItem(
+                        TodoAssignee.AssigneeId,
+                        TodoAssignee.AssigneeName,
+                        TodoAssignee.EmailAddress))
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ほかのユーザーにより更新されています。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private sealed record AssigneeListItem(string Id, string Name, string ?Email);
     }
 }

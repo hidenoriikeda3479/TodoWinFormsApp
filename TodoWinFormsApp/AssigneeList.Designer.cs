@@ -30,11 +30,14 @@
         {
             button1 = new Button();
             button2 = new Button();
+            dataGridView1 = new DataGridView();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(197, 132);
+            button1.Location = new Point(595, 26);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 0;
@@ -44,7 +47,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(394, 132);
+            button2.Location = new Point(703, 26);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 1;
@@ -52,15 +55,35 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 144);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(795, 301);
+            dataGridView1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            label1.Location = new Point(25, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(171, 29);
+            label1.TabIndex = 3;
+            label1.Text = "担当者登録・編集";
+            // 
             // AssigneeList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
+            Controls.Add(dataGridView1);
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "AssigneeList";
             Text = "AssigneeList";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -68,5 +91,7 @@
 
         private Button button1;
         private Button button2;
+        private DataGridView dataGridView1;
+        private Label label1;
     }
 }

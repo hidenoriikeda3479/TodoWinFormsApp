@@ -82,7 +82,7 @@ namespace TodoWinFormsApp
             // 接続
             await using var dbContext = new TodoDbContext();
 
-            
+
 
             try
             {
@@ -93,34 +93,35 @@ namespace TodoWinFormsApp
                     // assigneeidの有無
                     var assignee = await dbContext.TodoAssignees.FindAsync(_assigneeId.Value);
 
-                    if (assignee == null) 
+                    if (assignee == null)
                     {
                         MessageBox.Show("ほかのユーザーにより更新されています。最新の内容を再読み込みしてください。", "編集", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
-                    
-                    
-                }
-                else
-                {
-                    var assigneeinformation = new TodoAssignee
+
+
+                    }
+                    else
                     {
-                        AssigneeName = name,
-                        EmailAddress = mail,
-                        Note = detail,
-                        CreatedAt = DateTime.Now,
-                        UpdatedAt = DateTime.Now,
-                        LoggedUserCode = "SYSTEM",
-                        LoggedFunctionId = "ASG-EDT-001",
-                        LogType = 0
-                    };
+                        var assigneeinformation = new TodoAssignee
+                        {
+                            AssigneeName = name,
+                            EmailAddress = mail,
+                            Note = detail,
+                            CreatedAt = DateTime.Now,
+                            UpdatedAt = DateTime.Now,
+                            LoggedUserCode = "SYSTEM",
+                            LoggedFunctionId = "ASG-EDT-001",
+                            LogType = 0,
+                        };
 
-                    dbContext.TodoAssignees.Add(assigneeinformation);
+                        dbContext.TodoAssignees.Add(assigneeinformation);
 
+                    }
+                    await dbContext.SaveChangesAsync();
+                    MessageBox.Show("担当者を登録しました", "完了", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    DialogResult = DialogResult.OK;
+                    Close();
                 }
-                await dbContext.SaveChangesAsync();
-                MessageBox.Show("担当者を登録しました", "完了", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                DialogResult = DialogResult.OK;
-                Close();
             }
             catch (Exception ex)
             {
