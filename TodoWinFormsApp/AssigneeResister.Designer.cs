@@ -203,8 +203,6 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private TextBox textBox1;
-        private TextBox textBox2;
         private TextBox textBoxEmail;
         private TextBox textBoxDetail;
         private Label AssigneeIdLabel;

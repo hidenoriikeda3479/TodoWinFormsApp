@@ -32,6 +32,10 @@
             button2 = new Button();
             dataGridView1 = new DataGridView();
             label1 = new Label();
+            EditButtonColumn = new DataGridViewButtonColumn();
+            ColumnId = new DataGridViewTextBoxColumn();
+            ColumnName = new DataGridViewTextBoxColumn();
+            ColumnEmail = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -58,10 +62,12 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { EditButtonColumn, ColumnId, ColumnName, ColumnEmail });
             dataGridView1.Location = new Point(3, 144);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(795, 301);
             dataGridView1.TabIndex = 2;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label1
             // 
@@ -71,6 +77,31 @@
             label1.Size = new Size(171, 29);
             label1.TabIndex = 3;
             label1.Text = "担当者登録・編集";
+            // 
+            // EditButtonColumn
+            // 
+            EditButtonColumn.HeaderText = "操作";
+            EditButtonColumn.Name = "EditButtonColumn";
+            EditButtonColumn.Text = "編集";
+            EditButtonColumn.UseColumnTextForButtonValue = true;
+            // 
+            // ColumnId
+            // 
+            ColumnId.DataPropertyName = "Id";
+            ColumnId.HeaderText = "担当者ID";
+            ColumnId.Name = "ColumnId";
+            // 
+            // ColumnName
+            // 
+            ColumnName.DataPropertyName = "Name";
+            ColumnName.HeaderText = "担当者名";
+            ColumnName.Name = "ColumnName";
+            // 
+            // ColumnEmail
+            // 
+            ColumnEmail.DataPropertyName = "Email";
+            ColumnEmail.HeaderText = "Email";
+            ColumnEmail.Name = "ColumnEmail";
             // 
             // AssigneeList
             // 
@@ -83,6 +114,7 @@
             Controls.Add(button1);
             Name = "AssigneeList";
             Text = "AssigneeList";
+            Load += AssigneeList_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -93,5 +125,9 @@
         private Button button2;
         private DataGridView dataGridView1;
         private Label label1;
+        private DataGridViewButtonColumn EditButtonColumn;
+        private DataGridViewTextBoxColumn ColumnId;
+        private DataGridViewTextBoxColumn ColumnName;
+        private DataGridViewTextBoxColumn ColumnEmail;
     }
 }

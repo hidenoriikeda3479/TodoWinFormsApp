@@ -18,7 +18,15 @@ namespace TodoWinFormsApp
         public AssigneeList()
         {
             InitializeComponent();
+            dataGridView1.AutoGenerateColumns = false;
         }
+
+
+        private async void AssigneeList_Load(object sender, EventArgs e)
+        {
+            await SearchAssigneeAsync();
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -33,26 +41,48 @@ namespace TodoWinFormsApp
 
         }
 
-        private async Task SearchDepartmentAsync()
+        private async Task SearchAssigneeAsync()
         {
             try
             {
                 await using var dbContext = new TodoDbContext();
 
                 var assingees = await dbContext.TodoAssignees
-                    .OrderBy(TodoAssignee => TodoAssignee.AssigneeId)
-                    .Select(TodoAssignee => new AssigneeListItem(
-                        TodoAssignee.AssigneeId,
-                        TodoAssignee.AssigneeName,
-                        TodoAssignee.EmailAddress))
+                    .OrderBy(x => x.AssigneeId)
+                    .Select(x => new AssigneeListItem(
+                        x.AssigneeId,
+                        x.AssigneeName,
+                        x.EmailAddress))
                     .ToListAsync();
+
+                dataGridView1.DataSource = assingees;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("ほかのユーザーにより更新されています。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("メッセージ定義", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private sealed record AssigneeListItem(string Id, string Name, string ?Email);
+        private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // ヘッダーなど、部署データがない行は処理しない
+            if (e.RowIndex < 0 || dataGridView1.Rows[e.RowIndex].DataBoundItem is not AssigneeListItem item)
+            {
+                return;
+            }
+
+            if (dataGridView1.Columns[e.ColumnIndex] == EditButtonColumn)
+            {
+                using var editForm = new AssigneeResister(item.Id);
+                if (editForm.ShowDialog(this) == DialogResult.OK)
+                {
+                    await SearchAssigneeAsync();
+                }
+            }
+        }
+
+        
+
+        public sealed record AssigneeListItem(string Id, string Name, string? Email);
     }
 }
