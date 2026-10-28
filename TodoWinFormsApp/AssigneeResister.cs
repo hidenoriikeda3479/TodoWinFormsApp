@@ -80,7 +80,7 @@ namespace TodoWinFormsApp
             catch (Exception ex)
             {
                 // 最初のデータ取得失敗なのでメッセージを変えた方が好ましい　ex:接続エラー再度お試しくださいなど
-                ShowError("保存処理に失敗しました。入力内容を確認して再度お試しください。", ex);
+                ShowError("DB処理に失敗しました。入力内容を確認して再度お試しください。", ex);
             }
             finally
             {
@@ -182,7 +182,6 @@ namespace TodoWinFormsApp
                 return;
             }
             else if (mail.Length > 254 || string.IsNullOrEmpty(mail) || !mail.Contains('@'))
-            // メアドは任意なのでIsNullOrEmptyはどうにかする
             {
                 MessageBox.Show("正しいメールアドレスを入力してください", "入力確認", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBoxEmail.Focus();
@@ -210,6 +209,7 @@ namespace TodoWinFormsApp
                     {
                         AssigneeName = name,
                         EmailAddress = mail,
+                        // 三項演算子
                         Note = string.IsNullOrEmpty(detail) ? null : detail,
                         CreatedAt = DateTime.Now,
                         UpdatedAt = DateTime.Now,
