@@ -17,12 +17,17 @@ namespace TodoWinFormsApp
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ButtonAssigneeList_Click(object sender, EventArgs e)
         {
             using (var form = new AssigneeList())
             {
                 form.ShowDialog();
             }
+        }
+
+        private void ButtonTodoCheck_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

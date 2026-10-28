@@ -28,36 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            todoCheck = new Button();
+            ButtonAssigneeList = new Button();
+            ButtonTodoCheck = new Button();
             SuspendLayout();
             // 
-            // button1
+            // ButtonAssigneeList
             // 
-            button1.Location = new Point(157, 206);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "担当者一覧";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            ButtonAssigneeList.Location = new Point(157, 206);
+            ButtonAssigneeList.Name = "ButtonAssigneeList";
+            ButtonAssigneeList.Size = new Size(75, 23);
+            ButtonAssigneeList.TabIndex = 0;
+            ButtonAssigneeList.Text = "担当者一覧";
+            ButtonAssigneeList.UseVisualStyleBackColor = true;
+            ButtonAssigneeList.Click += ButtonAssigneeList_Click;
             // 
-            // todoCheck
+            // ButtonTodoCheck
             // 
-            todoCheck.Location = new Point(536, 206);
-            todoCheck.Name = "todoCheck";
-            todoCheck.Size = new Size(75, 23);
-            todoCheck.TabIndex = 1;
-            todoCheck.Text = "Todo確認";
-            todoCheck.UseVisualStyleBackColor = true;
+            ButtonTodoCheck.Location = new Point(536, 206);
+            ButtonTodoCheck.Name = "ButtonTodoCheck";
+            ButtonTodoCheck.Size = new Size(75, 23);
+            ButtonTodoCheck.TabIndex = 1;
+            ButtonTodoCheck.Text = "Todo確認";
+            ButtonTodoCheck.UseVisualStyleBackColor = true;
+            ButtonTodoCheck.Click += ButtonTodoCheck_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(todoCheck);
-            Controls.Add(button1);
+            Controls.Add(ButtonTodoCheck);
+            Controls.Add(ButtonAssigneeList);
             Name = "MainForm";
             Text = "MainForm";
             ResumeLayout(false);
@@ -65,7 +66,7 @@
 
         #endregion
 
-        private Button button1;
-        private Button todoCheck;
+        private Button ButtonAssigneeList;
+        private Button ButtonTodoCheck;
     }
 }
