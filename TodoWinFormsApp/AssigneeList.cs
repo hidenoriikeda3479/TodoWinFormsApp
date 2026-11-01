@@ -21,7 +21,6 @@ namespace TodoWinFormsApp
             dataGridView1.AutoGenerateColumns = false;
         }
 
-
         private async void AssigneeList_Load(object sender, EventArgs e)
         {
             await SearchAssigneeAsync();
@@ -36,18 +35,17 @@ namespace TodoWinFormsApp
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private async Task SearchAssigneeAsync()
         {
+            SetBusy(true);
+
             try
             {
+                var searchText = SearchTextBox.Text.Trim();
                 await using var dbContext = new TodoDbContext();
 
                 var assingees = await dbContext.TodoAssignees
+                    .Where(x => string.IsNullOrEmpty(searchText) || x.AssigneeName.Contains(searchText))
                     .OrderBy(x => x.AssigneeId)
                     .Select(x => new AssigneeListItem(
                         x.AssigneeId,
@@ -59,7 +57,11 @@ namespace TodoWinFormsApp
             }
             catch (Exception)
             {
-                MessageBox.Show("メッセージ定義", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("DB処理に失敗しました。", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                SetBusy(false);
             }
         }
 
@@ -81,8 +83,19 @@ namespace TodoWinFormsApp
             }
         }
 
-        
+        private async void buttonSearch_Click(object sender, EventArgs e)
+        {
+            await SearchAssigneeAsync();
+        }
 
+        private void SetBusy(bool isBusy)
+        {
+            UseWaitCursor = isBusy;
+            buttonSearch.Enabled = !isBusy;
+            button1.Enabled = !isBusy;
+            dataGridView1.Enabled = !isBusy;
+            EditButtonColumn.ReadOnly = isBusy;
+        }
         public sealed record AssigneeListItem(string Id, string Name, string? Email);
     }
 }

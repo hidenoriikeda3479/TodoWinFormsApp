@@ -16,5 +16,25 @@ namespace TodoWinFormsApp.Models
         {
             InitializeComponent();
         }
+
+        private void TodoResister_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonReturn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRestore_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

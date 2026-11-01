@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            button2 = new Button();
             dataGridView1 = new DataGridView();
-            label1 = new Label();
             EditButtonColumn = new DataGridViewButtonColumn();
             ColumnId = new DataGridViewTextBoxColumn();
             ColumnName = new DataGridViewTextBoxColumn();
             ColumnEmail = new DataGridViewTextBoxColumn();
+            label1 = new Label();
+            SearchTextBox = new TextBox();
+            buttonSearch = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -49,16 +50,6 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // button2
-            // 
-            button2.Location = new Point(703, 26);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 1;
-            button2.Text = "担当者編集";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -68,15 +59,6 @@
             dataGridView1.Size = new Size(795, 301);
             dataGridView1.TabIndex = 2;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // label1
-            // 
-            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
-            label1.Location = new Point(25, 20);
-            label1.Name = "label1";
-            label1.Size = new Size(171, 29);
-            label1.TabIndex = 3;
-            label1.Text = "担当者登録・編集";
             // 
             // EditButtonColumn
             // 
@@ -103,31 +85,60 @@
             ColumnEmail.HeaderText = "Email";
             ColumnEmail.Name = "ColumnEmail";
             // 
+            // label1
+            // 
+            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            label1.Location = new Point(25, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(171, 29);
+            label1.TabIndex = 3;
+            label1.Text = "担当者登録・編集";
+            // 
+            // SearchTextBox
+            // 
+            SearchTextBox.Location = new Point(116, 81);
+            SearchTextBox.Name = "SearchTextBox";
+            SearchTextBox.Size = new Size(356, 23);
+            SearchTextBox.TabIndex = 6;
+            // 
+            // buttonSearch
+            // 
+            buttonSearch.Location = new Point(509, 80);
+            buttonSearch.Name = "buttonSearch";
+            buttonSearch.Size = new Size(75, 23);
+            buttonSearch.TabIndex = 5;
+            buttonSearch.Text = "検索";
+            buttonSearch.UseVisualStyleBackColor = true;
+            buttonSearch.Click += buttonSearch_Click;
+            // 
             // AssigneeList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(SearchTextBox);
+            Controls.Add(buttonSearch);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
-            Controls.Add(button2);
             Controls.Add(button1);
             Name = "AssigneeList";
             Text = "AssigneeList";
             Load += AssigneeList_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button button1;
-        private Button button2;
         private DataGridView dataGridView1;
         private Label label1;
         private DataGridViewButtonColumn EditButtonColumn;
         private DataGridViewTextBoxColumn ColumnId;
         private DataGridViewTextBoxColumn ColumnName;
         private DataGridViewTextBoxColumn ColumnEmail;
+        private TextBox SearchTextBox;
+        private Button buttonSearch;
     }
 }

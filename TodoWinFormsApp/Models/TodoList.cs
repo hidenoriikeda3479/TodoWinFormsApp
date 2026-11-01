@@ -10,11 +10,31 @@ using System.Windows.Forms;
 
 namespace TodoWinFormsApp.Models
 {
-    public partial class Form1 : Form
+    public partial class TodoList : Form
     {
-        public Form1()
+        public TodoList()
         {
             InitializeComponent();
+        }
+
+        private void TodoList_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void buttonCreate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

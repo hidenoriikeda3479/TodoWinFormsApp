@@ -135,6 +135,7 @@
             buttonRestore.TabIndex = 22;
             buttonRestore.Text = "保存";
             buttonRestore.UseVisualStyleBackColor = true;
+            buttonRestore.Click += buttonRestore_Click;
             // 
             // buttonDelete
             // 
@@ -144,6 +145,7 @@
             buttonDelete.TabIndex = 21;
             buttonDelete.Text = "削除";
             buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Click += buttonDelete_Click;
             // 
             // buttonReturn
             // 
@@ -153,6 +155,7 @@
             buttonReturn.TabIndex = 20;
             buttonReturn.Text = "戻る";
             buttonReturn.UseVisualStyleBackColor = true;
+            buttonReturn.Click += buttonReturn_Click;
             // 
             // comboBox1
             // 
@@ -250,6 +253,7 @@
             Controls.Add(buttonReturn);
             Name = "TodoResister";
             Text = "TodoResister";
+            Load += TodoResister_Load;
             ResumeLayout(false);
             PerformLayout();
         }
